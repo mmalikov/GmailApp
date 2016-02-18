@@ -7,7 +7,9 @@ angular.module("GmailApp")
             id: '',
             username: '',
             email: '',
-            phone: ''
+            phone: '',
+            firstName:'',
+            lastName:''
         };
 
         return exports;

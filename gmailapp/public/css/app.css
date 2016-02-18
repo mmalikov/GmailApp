@@ -1,0 +1,37 @@
+.sidebar-icon {
+    margin-left: 0;
+}
+
+.selected-message {
+    background-color: #E3EDFE;
+    border-left: 3px solid #4385F4 !important;
+}
+
+.selected-box {
+    background-color: #EDEDED;
+}
+
+.inbox-list-item {
+    min-width: 350px;
+}
+
+.favorite-icon:focus {
+    outline: none;
+}
+
+.favorite-icon-active {
+    color: yellow;
+}
+
+.info-container {
+    margin-left: 24px;
+}
+
+.msg-list-border {
+    border-left: 3px solid #ffffff;
+}
+
+.inbox-container {
+    width: 100%;
+    padding: 0 10px 0 10px;
+}

@@ -5,11 +5,11 @@ angular.module('GmailApp', ['ngRoute', 'ngMaterial', 'ngSanitize'])
         $httpProvider.defaults.withCredentials = true;
 
         $routeProvider.when("/inbox", {
-            templateUrl: "templates/inbox.html"
+            templateUrl: "views/inbox.html"
         });
 
         $routeProvider.otherwise({
-            templateUrl: "templates/auth.html"
+            templateUrl: "views/auth.html"
         });
     })
     .controller("MainController", ['$scope', '$log', function ($scope, $log) {

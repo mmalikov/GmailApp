@@ -65,7 +65,7 @@ angular.module("GmailApp")
                 var deferred = $q.defer();
                 $http.get(BASE_URL + USER + "me", {sid: Storage.sid})
                     .then(function (data) {
-                        var properties = ['username', 'email', 'phone'];
+                        var properties = ['username', 'email', 'phone', 'firstName', 'lastName'];
 
                         properties.forEach(function (property) {
                             console.log(property);

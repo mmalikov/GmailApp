@@ -1,7 +1,7 @@
 <div>
-    <md-list style="min-width: 360px;">
+    <md-list style="min-width: 360px;" ng-if="messageList.length">
         <md-list-item ng-class="{'selected-message': messageID == item.id}"
-                      class="md-3-line msg-list-border"
+                      class="md-3-line msg-list-border fade"
                       ng-repeat="item in messageList | box:currentBox | orderBy:'-date'"
                       ng-click="selectMessage(item)"
                       ng-init="$first && selectMessage(item)">
@@ -21,6 +21,10 @@
                          ng-hide="currentBox == 'sent'"></md-icon>
             </div>
 
+        <md-divider></md-divider>
         </md-list-item>
     </md-list>
+    <div  style="min-width: 360px;" ng-if="messageList.length < 1">
+        No message yet
+    </div>
 </div>
