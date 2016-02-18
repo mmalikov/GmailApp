@@ -1,0 +1,61 @@
+{
+	"type": "Collection",
+	"properties": {
+		"date": {
+			"name": "date",
+			"type": "number",
+			"typeLabel": "number",
+			"required": true,
+			"id": "date",
+			"order": 0
+		},
+		"from": {
+			"name": "from",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "from",
+			"order": 1
+		},
+		"to": {
+			"name": "to",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "to",
+			"order": 2
+		},
+		"subject": {
+			"name": "subject",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "subject",
+			"order": 3
+		},
+		"content": {
+			"name": "content",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "content",
+			"order": 4
+		},
+		"favorite": {
+			"name": "favorite",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "favorite",
+			"order": 5
+		},
+		"read": {
+			"name": "read",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "read",
+			"order": 6
+		}
+	}
+}

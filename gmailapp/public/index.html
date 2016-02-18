@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="en" ng-app="GmailApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html lang="en" ng-app="GmailApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html lang="en" ng-app="GmailApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--><html lang="en" ng-app="GmailApp" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Gmail App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="libs/angular-material/angular-material.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<main ng-controller="MainController" style="height: 100%;">
+    <div ng-view></div>
+</main>
+
+<!-- EXTERNAL LIBRARIES -->
+<script src="libs/angular/angular.js"></script>
+<script src="libs/angular-route/angular-route.js"></script>
+<script src="libs/angular-animate/angular-animate.js"></script>
+<script src="libs/angular-aria/angular-aria.js"></script>
+<script src="libs/angular-messages/angular-messages.js"></script>
+<script src="libs/angular-material/angular-material.js"></script>
+<script src="libs/angular-sanitize.js"></script>
+<script src="dpd.js"></script>
+<!-- APPLICATION FILES -->
+<script src="app.js"></script>
+<script src="controllers/InboxController.js"></script>
+<script src="directives/inbox_list/InboxListDirective.js"></script>
+<script src="directives/inbox/InboxDirective.js"></script>
+<script src="services/API.js"></script>
+<script src="services/Storage.js"></script>
+
+</body>
+</html>

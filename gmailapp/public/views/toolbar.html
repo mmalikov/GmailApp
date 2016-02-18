@@ -1,0 +1,23 @@
+<md-toolbar class="md-primary">
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Settings">
+            <md-icon md-svg-src="img/menu.svg"></md-icon>
+        </md-button>
+        <h2>
+            <span>{{currentBox | uppercase}}</span>
+        </h2>
+        <span flex></span>
+        <md-button class="md-icon-button" aria-label="Send message" ng-click="sendMessage()">
+            <md-icon md-svg-src="img/send.svg"></md-icon>
+            <md-tooltip md-visible="false" md-direction="down">
+                Sent
+            </md-tooltip>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="Delete message" ng-click="deleteMessage()">
+            <md-icon md-svg-src="img/delete.svg"></md-icon>
+            <md-tooltip md-visible="false" md-direction="down">
+                Delete
+            </md-tooltip>
+        </md-button>
+    </div>
+</md-toolbar>

@@ -1,0 +1,51 @@
+<md-dialog style="width: 400px; height: 500px;" aria-label="Login Dialog" ng-cloak>
+    <form name="SendForm">
+        <md-toolbar class="md-primary">
+            <div class="md-toolbar-tools">
+                <h2>Send</h2>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-content layout-padding>
+                <div>
+                    <md-input-container class="md-block">
+                        <label>To: </label>
+                        <input name="to" autofocus required type="text" ng-model="message.to">
+
+                        <div ng-messages="message.to.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block">
+                        <label>Enter message subject</label>
+                        <input name="subject" required type="text" ng-model="message.subject">
+
+                        <div ng-messages="message.subject.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block">
+                        <label>Compose message</label>
+                        <textarea name="content" rows="10" required type="text" ng-model="message.content"></textarea>
+
+                        <div ng-messages="message.content.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </md-content>
+
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="send()"
+                       ng-disabled="SendForm.$invalid || SendForm.to.$pristine || SendForm.content.$pristine || SendForm.subject.$pristine"
+                       style="margin-right:20px;">
+                Send
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

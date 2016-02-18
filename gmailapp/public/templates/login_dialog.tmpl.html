@@ -1,0 +1,43 @@
+<md-dialog style="width: 270px; height: 360px;" aria-label="Login Dialog" ng-cloak>
+    <form name="loginForm">
+        <md-toolbar class="md-primary">
+            <div class="md-toolbar-tools">
+                <h2>Login</h2>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-content layout-padding>
+                <div>
+                    <md-input-container class="md-block">
+                        <label>Enter your user name</label>
+                        <input name="userName" autofocus required type="text" ng-model="user.name">
+
+                        <div ng-messages="user.name.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block">
+                        <label>Enter your password</label>
+                        <input name="userPassword" required type="password" ng-model="user.password">
+
+                        <div ng-messages="user.password.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </md-content>
+
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="login()"
+                       ng-disabled="loginForm.$invalid"
+                       style="margin-right:20px;">
+                <!--  || loginForm.userName.$pristine || loginForm.userPassword.$pristine -->
+                Login
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
