@@ -9,14 +9,14 @@
             <img src="img/60.jpeg" alt="Cat" class="md-avatar">
 
             <div class="md-list-item-text">
-                <h3 ng-style="{}">{{item.from}}</h3>
-                <h4 ng-style="{}">{{item.subject}}</h4>
+                <h3><span>From: </span>{{item.from}}</h3>
+                <h4><span>Subject: </span>{{item.subject}}</h4>
             </div>
             <div layout="column">
                 <span class="md-body-1">{{item.date | date:"mediumDate"}}</span>
                 <md-icon class="favorite-icon"
                          md-svg-src="img/star-outline.svg"
-                         ng-class="{'favorite-icon-active': message.favorite}"
+                         ng-class="{'favorite-icon-active': item.favorite}"
                          ng-click="toggleFavorite()"
                          ng-hide="currentBox == 'sent'"></md-icon>
             </div>

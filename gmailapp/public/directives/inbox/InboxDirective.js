@@ -16,6 +16,8 @@ angular.module("GmailApp")
                         favorite: !$scope.message.favorite
                     };
 
+                    console.dir("toggle favorite: " + property);
+
                     var promise = API.message.updateMessage($scope.message.id, property);
                     if (angular.isDefined(promise) && angular.isDefined(promise.then)) {
                         promise.then(function () {
