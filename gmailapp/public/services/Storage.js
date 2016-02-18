@@ -5,7 +5,7 @@ angular.module("GmailApp")
         exports.sid = {};
         exports.user = {
             id: '',
-            name: '',
+            username: '',
             address: '',
             country: '',
             email: '',

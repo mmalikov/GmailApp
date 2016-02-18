@@ -1,11 +1,11 @@
 <md-content class="inbox-container">
     <div layout="column">
         <h2>
-            {{message.subject}}
+           <span>Subject: </span> {{message.subject}}
         </h2>
         <md-divider></md-divider>
         <div class="md-list-item-text" layout="column">
-            <h3>{{message.from}}</h3>
+            <span>From: </span> <h3>{{message.from}}</h3>
         </div>
         <md-divider></md-divider>
         <div ng-bind-html="message.content"></div>

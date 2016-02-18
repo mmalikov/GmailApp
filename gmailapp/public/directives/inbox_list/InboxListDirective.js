@@ -40,7 +40,7 @@ angular.module("GmailApp")
                 });
 
                 dpd.on("messages:create", function (data) {
-                    if (data.from == Storage.user.name || data.to == Storage.user.name) {
+                    if (data.from == Storage.user.username || data.to == Storage.user.username) {
                         $scope.messageList.push(data);
                         $route.reload();
                     }
@@ -54,12 +54,12 @@ angular.module("GmailApp")
                 switch (box) {
                     case 'inbox':
                     {
-                        return $filter('filter')(data, {to: Storage.user.name});
+                        return $filter('filter')(data, {to: Storage.user.username});
                     }
                         break;
                     case 'sent':
                     {
-                        return $filter('filter')(data, {from: Storage.user.name});
+                        return $filter('filter')(data, {from: Storage.user.username});
                     }
                         break;
                     case 'favorite':

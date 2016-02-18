@@ -31,26 +31,20 @@ angular.module("GmailApp")
 
                 return deferred.promise;
             },
+            logout: function () {
+                $http.post(BASE_URL + USER + "logout");
+            },
             getCurrentUser: function () {
                 var deferred = $q.defer();
                 $http.get(BASE_URL + USER + "me", {sid: Storage.sid})
                     .then(function (data) {
-                        $log.info(data);
-                        $log.info(data.data);
+                        var properties = ['username', 'address', 'country', 'state', 'email', 'phone'];
 
-                        Storage.user.name = data.data.username;
-                        Storage.user.address = data.data.address;
-                        Storage.user.country = data.data.country;
-                        Storage.user.state = data.data.state;
-                        Storage.user.email = data.data.email;
-                        Storage.user.phone = data.data.phone;
-
-                        $log.debug("Storage.user: " + Storage.user.name);
-                        $log.debug("Storage.user: " + Storage.user.address);
-                        $log.debug("Storage.user: " + Storage.user.country);
-                        $log.debug("Storage.user: " + Storage.user.state);
-                        $log.debug("Storage.user: " + Storage.user.email);
-                        $log.debug("Storage.user: " + Storage.user.phone);
+                        properties.forEach(function (property) {
+                            console.log(property);
+                            console.log(data.data[property]);
+                            Storage.user[property] = data.data[property];
+                        });
 
                         deferred.resolve(data.data);
                     }, function (error) {
@@ -66,7 +60,7 @@ angular.module("GmailApp")
             getMessages: function () {
                 var deferred = $q.defer();
 
-                $http.get(BASE_URL + "/messages?" + '{\"$or\":[{\"from\":\"' + Storage.user.name + '\"},{\"to\":\"' + Storage.user.name + '\"}]}')
+                $http.get(BASE_URL + "/messages?" + '{\"$or\":[{\"from\":\"' + Storage.user.username + '\"},{\"to\":\"' + Storage.user.username + '\"}]}')
                     .then(function (data) {
                         $log.info("messages: " + data.data);
                         deferred.resolve(data.data);
@@ -101,10 +95,10 @@ angular.module("GmailApp")
                 return deferred.promise;
             },
             sendMessage: function (message) {
-                if(angular.isDefined(message)){
+                if (angular.isDefined(message)) {
 
                     message.date = Date.now();
-                    message.from = Storage.user.name;
+                    message.from = Storage.user.username;
                     message.favorite = false;
                     message.read = false;
 

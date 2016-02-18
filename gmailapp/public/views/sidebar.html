@@ -3,24 +3,24 @@
     <md-content>
         <div>
             <div class="user-info info-container" flex layout="column" layout-align-md="start start">
-                <span class="md-headline">{{user.name}}</span>
+                <span class="md-headline">{{user.username}}</span>
                 <span class="md-subhead">{{user.email}}</span>
             </div>
         </div>
         <md-divider></md-divider>
         <md-list class="list">
 
-            <md-list-item class="sidebar-list-item" layout="row" ng-click="setBox('inbox')">
+            <md-list-item class="sidebar-list-item" layout="row" ng-click="setBox('inbox')" ng-class="{'selected-box': currentBox == 'inbox'}">
                 <md-icon md-svg-src="img/gmail.svg" class="sidebar-icon"></md-icon>
                 <h3>Inbox</h3>
             </md-list-item>
 
-            <md-list-item class="sidebar-list-item" layout="row" ng-click="setBox('sent')">
+            <md-list-item class="sidebar-list-item" layout="row" ng-click="setBox('sent')" ng-class="{'selected-box': currentBox == 'sent'}">
                 <md-icon md-svg-src="img/send.svg" class="sidebar-icon"></md-icon>
                 <h3>Sent</h3>
             </md-list-item>
 
-            <md-list-item class="sidebar-list-item" layout="row" ng-click="setBox('favorite')">
+            <md-list-item class="sidebar-list-item" layout="row" ng-click="setBox('favorite')" ng-class="{'selected-box': currentBox == 'favorite'}">
                 <md-icon md-svg-src="img/star.svg" class="sidebar-icon"></md-icon>
                 <h3>Favorite</h3>
             </md-list-item>

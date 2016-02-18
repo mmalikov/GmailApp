@@ -1,5 +1,5 @@
 /*.md-primary {*/
-    /*background-color: #DA4336 !important;*/
+/*background-color: #DA4336 !important;*/
 /*}*/
 
 .sidebar-icon {
@@ -9,6 +9,10 @@
 .selected-message {
     background-color: #E3EDFE;
     border-left: 3px solid #4385F4 !important;
+}
+
+.selected-box {
+    background-color: #EDEDED;
 }
 
 .inbox-list-item {
