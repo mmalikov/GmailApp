@@ -9,6 +9,20 @@ angular.module("GmailApp")
         var exports = {};
 
         exports.user = {
+            create: function (user) {
+                var deferred = $q.defer();
+
+                $http.post(BASE_URL + USER, user)
+                    .then(function (data) {
+                        console.dir(data);
+
+                        deferred.resolve(data);
+                    }, function (error) {
+                        deferred.reject(error);
+                    });
+
+                return deferred.promise;
+            },
             login: function (user) {
                 var deferred = $q.defer();
 
@@ -34,11 +48,24 @@ angular.module("GmailApp")
             logout: function () {
                 $http.post(BASE_URL + USER + "logout");
             },
+            getUsers: function () {
+                var deferred = $q.defer();
+
+                $http.get(BASE_URL + USER)
+                    .then(function (data) {
+                        console.dir(data);
+                        deferred.resolve(data.data);
+                    }, function (error) {
+                        deferred.reject(error);
+                    });
+
+                return deferred.promise;
+            },
             getCurrentUser: function () {
                 var deferred = $q.defer();
                 $http.get(BASE_URL + USER + "me", {sid: Storage.sid})
                     .then(function (data) {
-                        var properties = ['username', 'address', 'country', 'state', 'email', 'phone'];
+                        var properties = ['username', 'email', 'phone'];
 
                         properties.forEach(function (property) {
                             console.log(property);

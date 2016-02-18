@@ -32,11 +32,15 @@
         </md-dialog-content>
         <md-dialog-actions layout="row">
             <span flex></span>
+            <md-button ng-click="toSignUpDialog()"
+                       style="margin-right:20px;"
+                       class="md-primary md-hue-1">
+                Sign up
+            </md-button>
             <md-button ng-click="login()"
-                       ng-disabled="loginForm.$invalid"
+                       ng-disabled="loginForm.$invalid || loginForm.userName.$pristine || loginForm.userPassword.$pristine"
                        style="margin-right:20px;">
-                <!--  || loginForm.userName.$pristine || loginForm.userPassword.$pristine -->
-                Login
+                Sign in
             </md-button>
         </md-dialog-actions>
     </form>
