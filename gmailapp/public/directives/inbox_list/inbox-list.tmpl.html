@@ -1,5 +1,5 @@
-<div>
-    <md-list style="min-width: 360px;" ng-if="messageList.length">
+<div layout="column">
+    <md-list style="min-width: 360px;" ng-if="(messageList | box:currentBox).length !== 0">
         <md-list-item ng-class="{'selected-message': messageID == item.id}"
                       class="md-3-line msg-list-border fade"
                       ng-repeat="item in messageList | box:currentBox | orderBy:'-date'"
@@ -9,8 +9,10 @@
             <img src="img/60.jpeg" alt="Cat" class="md-avatar">
 
             <div class="md-list-item-text">
-                <h3>{{item.from}}</h3>
-                <h4>{{item.subject}}</h4>
+                <h3 ng-if="currentBox == 'inbox' || currentBox == 'favorite'">From: {{item.from}}</h3>
+
+                <h3 ng-if="currentBox == 'sent'">To: {{item.to}}</h3>
+                <h4>Subject: {{item.subject}}</h4>
             </div>
             <div layout="column">
                 <span class="md-body-1">{{item.date | date:"mediumDate"}}</span>
@@ -18,13 +20,13 @@
                          md-svg-src="img/star-outline.svg"
                          ng-class="{'favorite-icon-active': item.favorite}"
                          ng-click="toggleFavorite()"
-                         ng-hide="currentBox == 'sent'"></md-icon>
+                         ng-if="currentBox !== 'sent'"></md-icon>
             </div>
 
-        <md-divider></md-divider>
+            <md-divider></md-divider>
         </md-list-item>
     </md-list>
-    <div  style="min-width: 360px;" ng-if="messageList.length < 1">
-        No message yet
+    <div layout-align="center center" style="min-width: 360px;" ng-if="(messageList  | box:currentBox).length == 0">
+        <span>No message yet</span>
     </div>
 </div>

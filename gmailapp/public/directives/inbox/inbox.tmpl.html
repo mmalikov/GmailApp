@@ -5,7 +5,7 @@
         </h2>
         <md-divider></md-divider>
         <div class="md-list-item-text" layout="column">
-            <span>From: </span> <h3>{{message.from}}</h3>
+            <span>From: {{user.firstName}} {{user.lastName}}</span>
         </div>
         <md-divider></md-divider>
         <div ng-bind-html="message.content"></div>

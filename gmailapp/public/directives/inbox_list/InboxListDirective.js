@@ -16,7 +16,7 @@ angular.module("GmailApp")
 
                 var selectedMessageIndex = 0;
                 $scope.messageID = {};
-                $scope.messageList = {};
+                $scope.messageList = [];
 
                 $scope.selectMessage = function (message) {
                     if (angular.isDefined(message)) {
@@ -64,7 +64,13 @@ angular.module("GmailApp")
                         break;
                     case 'favorite':
                     {
-                        return $filter('filter')(data, {favorite: true});
+                        var result = [];
+                        angular.forEach(data, function (item) {
+                            if (item.to == Storage.user.username) {
+                                result.push(item);
+                            }
+                        });
+                        return $filter('filter')(result, {favorite: true});
                     }
                         break;
                 }

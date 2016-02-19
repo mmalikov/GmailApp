@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('GmailApp', ['ngRoute', 'ngMaterial', 'ngSanitize'])
+angular.module('GmailApp', ['ngRoute', 'ngMaterial', 'ngSanitize', 'ngAnimate'])
     .config(function ($routeProvider, $httpProvider) {
         $httpProvider.defaults.withCredentials = true;
 
