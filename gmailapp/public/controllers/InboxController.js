@@ -5,6 +5,9 @@ angular.module("GmailApp")
     .controller("InboxController", ['$scope', '$rootScope', '$location', '$log', '$mdDialog', 'Storage', 'API',
         function ($scope, $rootScope, $location, $log, $mdDialog, Storage, API) {
 
+            var okMessage = 'Yes';
+            var cancelMessage = 'No';
+
             $scope.user = Storage.user;
             $scope.currentBox = 'inbox';
 
@@ -12,18 +15,6 @@ angular.module("GmailApp")
                 if (angular.isDefined(box) && angular.isString(box)) {
                     $scope.currentBox = box;
                 }
-            };
-
-            $scope.deleteMessage = function () {
-
-                var confirm = $mdDialog.confirm()
-                    .title('Would you like to delete your mail?')
-                    .ok('Yes')
-                    .cancel('No');
-                $mdDialog.show(confirm)
-                    .then(function () {
-                        $rootScope.$broadcast("deleteMessage");
-                    });
             };
 
             $scope.sendMessage = function () {
@@ -37,17 +28,27 @@ angular.module("GmailApp")
                 });
             };
 
+
+            $scope.deleteMessage = function () {
+                var title = 'Would you like to delete your mail?';
+                var confirmDialog = createConfirmDialog($mdDialog, title, okMessage, cancelMessage);
+
+                $mdDialog.show(confirmDialog)
+                    .then(function () {
+                        $rootScope.$broadcast("deleteMessage");
+                    });
+            };
+
             $scope.logout = function () {
-                var confirm = $mdDialog.confirm()
-                    .title('Would you like to logout?')
-                    .ok('Yes')
-                    .cancel('No');
-                $mdDialog.show(confirm)
+                var title = 'Would you like to logout?';
+                var confirmDialog = createConfirmDialog($mdDialog, title, okMessage, cancelMessage);
+
+                $mdDialog.show(confirmDialog)
                     .then(function () {
                         API.user.logout();
                         $location.path("/");
                     });
-            }
+            };
 
 
         }]);
@@ -58,4 +59,11 @@ function SendDialogController($scope, $mdDialog) {
         $mdDialog.hide($scope.message);
 
     }
+}
+
+function createConfirmDialog(mdDialog, title, okMessage, cancelMessage) {
+    return mdDialog.confirm()
+        .title(title)
+        .ok(okMessage)
+        .cancel(cancelMessage);
 }

@@ -14,8 +14,6 @@ angular.module("GmailApp")
 
                 $http.post(BASE_URL + USER, user)
                     .then(function (data) {
-                        console.dir(data);
-
                         deferred.resolve(data);
                     }, function (error) {
                         deferred.reject(error);
@@ -35,9 +33,6 @@ angular.module("GmailApp")
                         Storage.sid = data.data.id;
                         Storage.user.id = data.data.uid;
 
-                        $log.info("Storage.sid  = " + Storage.sid);
-                        $log.info(" Storage.user.id  = " + Storage.user.id);
-
                         deferred.resolve(data);
                     }, function (error) {
                         deferred.reject(error);
@@ -53,7 +48,6 @@ angular.module("GmailApp")
 
                 $http.get(BASE_URL + USER)
                     .then(function (data) {
-                        console.dir(data);
                         deferred.resolve(data.data);
                     }, function (error) {
                         deferred.reject(error);
@@ -68,14 +62,11 @@ angular.module("GmailApp")
                         var properties = ['username', 'email', 'phone', 'firstName', 'lastName'];
 
                         properties.forEach(function (property) {
-                            console.log(property);
-                            console.log(data.data[property]);
                             Storage.user[property] = data.data[property];
                         });
 
                         deferred.resolve(data.data);
                     }, function (error) {
-                        $log.error(error);
                         deferred.reject(error);
                     });
 
@@ -89,10 +80,8 @@ angular.module("GmailApp")
 
                 $http.get(BASE_URL + "/messages?" + '{\"$or\":[{\"from\":\"' + Storage.user.username + '\"},{\"to\":\"' + Storage.user.username + '\"}]}')
                     .then(function (data) {
-                        $log.info("messages: " + data.data);
                         deferred.resolve(data.data);
                     }, function (error) {
-                        $log.debug(error);
                         deferred.reject(error);
                     });
 
@@ -113,11 +102,12 @@ angular.module("GmailApp")
             deleteMessage: function (id) {
                 var deferred = $q.defer();
 
-                $http.delete(BASE_URL + MESSAGE + id).then(function (data) {
-                    deferred.resolve(data);
-                }, function (error) {
-                    deferred.reject(error);
-                });
+                $http.delete(BASE_URL + MESSAGE + id)
+                    .then(function (data) {
+                        deferred.resolve(data);
+                    }, function (error) {
+                        deferred.reject(error);
+                    });
 
                 return deferred.promise;
             },
@@ -137,5 +127,16 @@ angular.module("GmailApp")
         return exports;
     }]);
 
+function makeRequestToServer(httpRequestType, url, property) {
 
+    var deferred = $q.defer();
 
+    $http[httpRequestType](url, property ? property : null)
+        .then(function (data) {
+            deferred.resolve(data);
+        }, function (error) {
+            deferred.reject(error);
+        });
+
+    return deferred.promise;
+}
